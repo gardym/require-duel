@@ -1,8 +1,8 @@
 README?
 
-A simple impementation of _why's "Hackety Hack" sword-fighters from Art&&Code to illustrate a simple require.js setup.
+A simple impementation of _why's "Hackety Hack" sword-fighters from Art&&Code to illustrate a simple RequireJS setup.
 
-* The requirejs implementation: duel.html 
+* The RequireJS implementation: duel.html 
 * from the original monolithic: duel-all-in-one.html
 
 See:
