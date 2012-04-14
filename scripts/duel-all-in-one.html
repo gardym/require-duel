@@ -1,0 +1,128 @@
+<html>
+<head>
+<script data-main="scripts/main" src="scripts/require-jquery.js"></script>
+<style type="text/css">
+#frame_container pre {
+	font-size: 4em;
+	line-height: 1.5em;
+	float: left;
+	margin-top: 20px;
+}
+
+#frame_container {
+	position: absolute;
+	left: 0;
+	top: 40px;
+	margin-left: 40px;
+}
+
+</style>
+<script type="text/javascript">
+$(function() {
+
+	var insults = [
+	  "You fight like a dairy farmer.",
+		"Soon you'll be wearing my sword like a shish-kabob!",		
+		"You're no match for my brains, you poor fool.",
+		"This is the end for you, you gutter-crawling cur!",
+		"There are no words for how disgusting you are.",
+		"I'm not going to take your insolence sitting down!",
+		"People fall at my feet when they see me coming.",
+		"I've heard you are a contemptible sneak.",
+		"My handkerchief will wipe up your blood!",
+		"You are a pain in the backside, sir!",
+		"There are no clever moves that can help you now.",
+		"My name is feared in every dirty corner of this island!",
+	];
+
+	var retorts = [
+		"How appropriate. You fight like a cow.",
+		"First you'd better stop waving it around like a feather-duster.",
+		"I'd be in real trouble if you ever used them.",
+		"And I've got a TIP for you. Get the POINT?",
+		"Yes there are. You just never learned them.",
+		"Your hemorrhoids are flaring up again, eh?",
+		"Even BEFORE they smell your breath?",
+		"Too bad no one's ever heard of YOU at all.",
+		"So you got that job as janitor, after all.",
+		"Your hemorrhoids are flaring up again, eh?",
+		"Yes there are. You just never learned them.",
+		"So you got that job as janitor, after all."
+	];
+
+	// Swords
+	$(".frame").hide();
+	var frame = 1;
+	window.setInterval(function() {
+		$(".frame").hide();
+		$("." + (frame + 1)).show();
+		frame = (frame + 1) % 2;
+	}, 200);
+
+	// Insults
+	var insult_left = true;
+	var retort = false;
+	var insult_index = 0;
+	var filler = new Array(12).join(" ");
+	var showInsult = function() {
+
+		if(insult_left) {
+			insult_index = Math.floor(Math.random() * insults.length);
+		}
+
+		text = retort ? retorts[insult_index] : insults[insult_index];
+
+		text = text + "\n\n" + filler + (insult_left ? " /" : "") + filler + (!insult_left ? "\\" : "");
+		$("#insult").text(text);
+
+		retort = !retort;
+		insult_left = !insult_left;
+	};
+
+	showInsult();
+	window.setInterval(showInsult, 3000);
+
+	// Motion
+	var pace = 800;
+	var moveLeft = function() {
+		$("#frame_container").animate({left: "120px"}, pace, "swing", moveRight);
+	};
+
+	var moveRight = function() {
+		$("#frame_container").animate({left: "0"}, pace, "swing", moveLeft);
+	};
+
+	moveLeft();
+
+});
+</script>
+</head>
+<body>
+<div id="insult_container">
+<pre id="insult"></pre>
+<pre id="insult_bubble"></pre>
+</div>
+<div id="frame_container">
+<pre class="frame 1">
+ O
+&lt;|/
+/ \
+</pre>
+<pre class="frame 2">
+ O
+&lt;|\
+/ \
+</pre>
+<pre class="frame 2">
+ O
+/|>
+/ \
+</pre>
+<pre class="frame 1">
+ O
+\|>
+/ \
+</pre>
+</div>
+</body>
+</html>

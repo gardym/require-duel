@@ -1,0 +1,13 @@
+#frame_container pre {
+	font-size: 4em;
+	line-height: 1.5em;
+	float: left;
+	margin-top: 20px;
+}
+
+#frame_container {
+	position: absolute;
+	left: 0;
+	top: 40px;
+	margin-left: 40px;
+}
